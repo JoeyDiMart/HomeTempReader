@@ -19,4 +19,22 @@ Instructions and scrips for home temperature reader, for fermentation
 
 
 ## Le Potato OS set up 
-1. 
+1. Open a terminal and use this command to find the DS card identifier
+```shell 
+diskutil list
+```
+2. unmount the disk with the following command
+```shell
+diskutil unmountDisk /dev/{identifier}
+```
+- My example was called disk4s1, s1 means it only grabbed a single partition, so I used disk4
+3. Flash the OS image to the external SD card with this command
+```shell
+sudo dd if=/path/to/image.img of=/dev/rdisk2 bs=4m status=progress
+```
+- dd -> copies raw data byte to byte, a built in MacOS tool
+- if = input file
+- of = output file
+- bs = block size, makes it read 4MB at a time not byte by byte to speed up process
+- status = progress - > shows live progress in the terminal
+
