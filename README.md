@@ -88,6 +88,6 @@ arp -a
 ```
 - find the IP and ssh into it
 
-
+8. install Git and connect your GitHub with a PAT
 
 
