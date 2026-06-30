@@ -38,3 +38,56 @@ sudo dd if=/path/to/image.img of=/dev/rdisk2 bs=4m status=progress
 - bs = block size, makes it read 4MB at a time not byte by byte to speed up process
 - status = progress - > shows live progress in the terminal
 
+## Wi-Fi and config set up (Ubuntu)
+1. Go onto a Linux VM, make sure you allow it to read an external drive
+2. run this command to see the card 
+```shell
+lsblk
+```
+3. Mount the Linux partition
+```shell
+mkdir /mnt/ubuntu
+sudo mount /dev/sda2 /mnt/ubuntu
+```
+4. Go to the network config folder for the Ubuntu cloud here
+```shell
+/mnt/ubuntu/etc/netplan
+```
+- I only had an eth0.yaml, so I created a wireless.yaml
+5. create a wireless.yaml and fill it with your wifi information
+```shell
+network:
+  version: 2
+  renderer: networkd
+  wifis:
+    {interface}: 
+      dhcp4: true
+      optional: true
+      access-points:
+        "YourNetworkName":
+          password: "YourPassword"
+```
+- wlan0 is default usually it can be wrong, boot the Le Potato for a few minutes and mount it to your VM again and check the journal file to get the interface name
+6. Now you need to install and enable SSH for the device, default user and password is both "root"
+```shell
+sudo chroot /mnt/ubuntu /bin/bash
+```
+-  the above command will change the root, treating the folder it's moving to as a root directory, meaning the Le Potato's Ubuntu system you mounted is the new root
+- also opens a bash shell allowing you to run commands inside the Ubuntu file system while on your Kali VM, then able to boot
+```shell
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+apt install openssh-server
+systemctl enable ssh
+ssh-keygen -A # generate hostkeys
+exit
+```
+- installs ssh and enables it
+7. after giving the device time to boot, on your mac run
+```shell
+arp -a
+```
+- find the IP and ssh into it
+
+
+
+
