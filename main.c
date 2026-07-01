@@ -43,7 +43,7 @@ int main(void) {
     }
 
     int temp_millideg = atoi(t_pos + 2);  // converts a string of chars to its int value
-    int temp_f = (temp_millideg * 1000.8 + 32);
+    double temp_f = temp_millideg / 1000.8 + 32;
     printf("%d\n", temp_millideg);
     printf("%d\n", temp_f);
 
