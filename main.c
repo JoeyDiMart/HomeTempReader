@@ -47,7 +47,7 @@ int main(void) {
     const double temp_c = temp_millideg / 1000.0; // full-precision Celsius
     const double temp_f = temp_c * 1.8 + 32;
 
-    printf("%d\n", temp_millideg);
+    //printf("%d\n", temp_millideg);
     printf("%.2f\n", temp_f);
 
     return 0;

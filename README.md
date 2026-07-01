@@ -113,3 +113,11 @@ driver     features    name   subsystem   w1_slave
 ```
 - the filepath, w1_slave is a virtual file that will produce a temperature reading everytime it's opened
 - temperature file gives just a number, same as the w1_slave file giving a t=temp to the millidegree, no CEC check to validate
+
+
+```shell
+git pull
+gcc -o main main.c -lm
+./main
+```
+- pull from GitHub, compile the code (with math library), execute it
