@@ -12,5 +12,18 @@ int main() {
     fptr = fopen(strcat(FILE_PATH, FILE_NAME), "r");
     printf("%s\n", fptr);
 
+    if (fptr == NULL) {
+        perror("Error opening file");
+        return 1;
+    }
+
+    int ch;
+    while ((ch = fgetc(fptr)) != EOF) {
+        putchar(ch);
+    }
+
+
+
+    fclose(fptr);
     return 0;
 }
