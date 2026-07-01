@@ -19,8 +19,6 @@ int main() {
     int ch;
     char temp[3];
     while ((ch = fgetc(fptr)) != EOF) {
-        printf("%c", ch);
-
         if (putchar(ch) == 'c') {
             if (putchar(ch+1) == 'r' && putchar(ch+2) == 'c') {
                 if (putchar(ch+7) == 'N') {
@@ -32,6 +30,7 @@ int main() {
             putchar(ch);
         }
     }
+    printf("%c", ch);
 
     fclose(fptr);
     return 0;
