@@ -10,7 +10,6 @@ int main() {
     FILE *fptr;
 
     fptr = fopen(strcat(FILE_PATH, FILE_NAME), "r");
-    printf("%s\n", fptr);
 
     if (fptr == NULL) {
         perror("Error opening file");
@@ -18,11 +17,20 @@ int main() {
     }
 
     int ch;
+    char temp[3];
     while ((ch = fgetc(fptr)) != EOF) {
+        printf("%c", ch);
+
+        if (putchar(ch) == 'c') {
+            if (putchar(ch+1) == 'r' && putchar(ch+2) == 'c') {
+                if (putchar(ch+7) == 'N') {
+                    perror("CRC not confirmed");
+                }
+            }
+        }
+
         putchar(ch);
     }
-
-
 
     fclose(fptr);
     return 0;
