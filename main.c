@@ -44,9 +44,11 @@ int main(void) {
     }
 
     int temp_millideg = atoi(t_pos + 2);  // converts a string of chars to its int value
-    const double temp_f = floor(temp_millideg / 1000.0) * 0.8 + 32;
+    const double temp_c = temp_millideg / 1000.0; // full-precision Celsius
+    const double temp_f = floor(temp_c * 1.8 + 32);
+
     printf("%d\n", temp_millideg);
-    printf("%p\n", &temp_f);
+    printf("%.0f\n", temp_f);
 
     return 0;
 }
