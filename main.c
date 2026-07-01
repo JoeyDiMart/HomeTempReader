@@ -32,7 +32,7 @@ int main(void) {
 
     fclose(fptr);
 
-    if (strstr(line1, "YES") == NULL) {  // find first occurance of "YES" or else null and fail
+    if (strstr(line1, "YES") == NULL) {  // find first occurrance of "YES" or else null and fail
         fprintf(stderr, "CRC check failed, discarding reading\n");
         return 1;
     }
@@ -45,10 +45,10 @@ int main(void) {
 
     int temp_millideg = atoi(t_pos + 2);  // converts a string of chars to its int value
     const double temp_c = temp_millideg / 1000.0; // full-precision Celsius
-    const double temp_f = floor(temp_c * 1.8 + 32);
+    const double temp_f = temp_c * 1.8 + 32;
 
     printf("%d\n", temp_millideg);
-    printf("%.0f\n", temp_f);
+    printf("%.2f\n", temp_f);
 
     return 0;
 }
