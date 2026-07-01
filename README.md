@@ -91,3 +91,25 @@ arp -a
 8. install Git and connect your GitHub with a PAT
 
 
+# Notes/commands for future
+
+```shell
+ldto list
+```
+- list represents every pre-built device tree with the wiring of the board, corresponds with specific hardware or pin config
+- w1-gpio configures a GPIO pin as a 1-Wire bus. 
+
+```shell
+sudo ldto enable w1-gpio
+```
+- enable to test
+
+
+```shell
+/sys/bus/w1/devices/28-000000ba3148# ls
+alarms     eeprom_cmd  hwmon  power       temperature
+conv_time  ext_power   id     resolution  uevent
+driver     features    name   subsystem   w1_slave
+```
+- the filepath, w1_slave is a virtual file that will produce a temperature reading everytime it's opened
+- temperature file gives just a number, same as the w1_slave file giving a t=temp to the millidegree, no CEC check to validate
