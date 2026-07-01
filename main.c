@@ -28,8 +28,9 @@ int main() {
                 }
             }
         }
-
-        putchar(ch);
+        else {
+            putchar(ch);
+        }
     }
 
     fclose(fptr);
