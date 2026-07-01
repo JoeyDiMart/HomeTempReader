@@ -19,9 +19,9 @@ int main() {
     int ch;
     char temp[3];
     while ((ch = fgetc(fptr)) != EOF) {
-        if (putchar(ch) == 'c') {
-            if (putchar(ch+1) == 'r' && putchar(ch+2) == 'c') {
-                if (putchar(ch+7) == 'N') {
+        if ((char)ch == 'c') {
+            if ((char)ch+1 == 'r' && (char)ch+2 == 'c') {
+                if ((char)ch+7 == 'N') {
                     perror("CRC not confirmed");
                 }
             }
