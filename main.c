@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -43,9 +44,9 @@ int main(void) {
     }
 
     int temp_millideg = atoi(t_pos + 2);  // converts a string of chars to its int value
-    double temp_f = temp_millideg / 1000.8 + 32;
+    const double temp_f = floor(temp_millideg / 1000.0) * 0.8 + 32;
     printf("%d\n", temp_millideg);
-    printf("%d\n", temp_f);
+    printf("%p\n", &temp_f);
 
     return 0;
 }
